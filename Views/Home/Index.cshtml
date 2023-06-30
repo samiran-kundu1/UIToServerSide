@@ -1,0 +1,33 @@
+﻿@*@model IEnumerable<CreatePDF_Apps.Models.ProductModel>*@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CREATE PDF in ASP.Net MVC</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div id="PrintPDF">
+            <h1>This section is going to be printed in PDF</h1>
+        </div>
+        <br />
+
+        @using (Html.BeginForm("Export", "Home", FormMethod.Post))
+        {
+            <input type="hidden" name="ExportData" />
+            <input type="submit" id="btnSubmit" value="Export" />
+        }
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#btnSubmit").click(function () {
+                    $("input[name='ExportData']").val($("#PrintPDF").html());
+                });
+            });
+        </script>
+    </div>
+
+</div>
